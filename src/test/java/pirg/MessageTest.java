@@ -4,8 +4,6 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import pirg.Message;
-
 public class MessageTest {
 
    @Test

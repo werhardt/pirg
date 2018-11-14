@@ -3,16 +3,12 @@ package pirg;
 import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
-
+import okhttp3.Response;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import okhttp3.Response;
-import pirg.Message;
-import pirg.Sender;
 import pirg.server.SampleServer;
 
 public class SenderTest {
