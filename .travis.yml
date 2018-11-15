@@ -1,13 +1,12 @@
 language: java
 before_deploy:
 - mvn help:evaluate -N -Dexpression=project.version|grep -v '\['
-- export project_version=$(mvn help:evaluate -N -Dexpression=project.version|grep -v '\[')
+- export project_version=$(mvn help:evaluate -N -Dexpression=project.version|grep
+  -v '\[')
 deploy:
   provider: releases
   api_key:
-    secure: 3f6fb126bad5ed50f11e8254a2a0e3e2d8e52525
+    secure: PEmaYf2MnZzrwdC3Y88aW/lXZZb2lYTAz0eExq8hsfuFh6FXlsD6/1MlwmAjsEJLvHkZ1lp1CSEyeVXdfQhZvVqkN30WM+9sJSE4IHbJVKz6kjhmFFX8le9XWd2h2VqDJOlqRmZx9d9s7e/gfivWjm0DXvAI6mAoppC8xQrGdBE9/oaAUBERj0PYGbTVALlqzRJ995s+Da39urQKN6Re8KcazWkMhh/QSeX5vF+IdkRdoZ1uy7hJD7Bf6OARDGr9HmKEkS7Cj9LnDKGIxngNdmwSmJcSsr3eULaN1n69C84PVxbVyP38k/t6etWd9muW5Wud7hHOcraBsJXhnFvbdHz+KZOdaWoXvBMc0WbKEz1UQZY1XSLN4no4nhx4iK9qKYm3CIDyIdLCw7cZuu4IUnC8tYe7u58ByOGel2Nv3RoNrokEq7UbiG76qHGQAkfzHMhZ5SIWXfki+74Yg3/Ru9p9H6EunH0Bou6H/oGbYCjxpFicIkCOmIZp8A4C9nCylhCpelD12gJYcE7qxKlVuVNtlWyojIdqa8x9d3Uvra8hwAqlfs9iATmhzc+XUN9rlfjjF5DzySvMW0Ydxhi+x0aMSXVLZO552IwnRt7ZvGdatViXdWJDZ5fXUxxbYwZ53NhNT+X0LS1LYL2/73cdFLHXgzvaagItJSllFSnYnnw=
   file: pirg/target/pirg-$project_version.jar
-  skip_cleanup: true
   on:
     repo: werhardt/pirg
-  name: "$project_version"
