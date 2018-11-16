@@ -1,11 +1,13 @@
 language: java
 before_deploy:
-  - mvn help:evaluate -N -Dexpression=project.version|grep -v '\['
-  - export project_version=$(mvn help:evaluate -N -Dexpression=project.version|grep -v '\[')
+- mvn help:evaluate -N -Dexpression=project.version|grep -v '\['
+- export project_version=$(mvn help:evaluate -N -Dexpression=project.version|grep
+  -v '\[')
 deploy:
   provider: releases
-  api_key:
-    secure: cdkx3D4eQKOTkctFXyKF0wdECcIB7OH1gGvB3PlF7Av2eiST7xRjmzx2yFpHjBIshoDrtRM/yZsfnL7vJzwRiih+KKWDKRxU5AoDOqwXzicebCrFyfDnNfCULpty7GCUFTM5CPumjyrPiEFodrWLL89p2m0j8eFG2jPl1zDqQN4R+SwROZDJDzuO/kGF0T0fegAATluxSrkTYaNzhH6KV2CyH9EYwMNGjElM0RBt8u79wXGTqVrElGpDTNQsil9laXzP57+PdoHa69hJ16jSR+TfNK27QMIOYMGAAmiT+uT11+ikWXfwU1MAlnD8XeWslBys2BOkUBgEWGeANt4rcOyzfe1lofTmvXSGw8gst7OkoSgxLUR2QUH5qBwwFk7oGcQZy4qf/4BjK4oBMXdEbjHSxFyFeUk/1CTNINYrMIEADlFbclutWN4qiwkqI/crMYsXZoAa5NHGjwAKOC09u0hixgEm5DbRu0B33P0BhK+hm2nc2yUH3FPI3kcXGl6Ht6NrWr0ITUPhkRIy1g8O9jQnYFfY21e4adTeGYnLiL+A53TovBYj0lTyiRNxrP9Q3rTeZhfcr36TsGSgie0jEg4HyUkulTPl+TtTnukX0Gep7zJy47XrjfbXmXT+3y5h2keUg2yd25f8j8OsKsC6dEJHbDmTW+HkSKyD45P7M+E=
+  user: erhardt86@gmail.com
+  password:
+    secure: h8vloopOpPQpDZQrrPN5RDNR3DBRgBmfS0eNBBC2GTcbrH2w9iYQgTztO3K3dChIn1bT7uyCEJvE2nM0D4+I6onteypE1ZcQ/N+J1/tB7/xnHO5KxxZyURzW5+mfxfyDFyVZ+gpBVwHPAUAf/XkMENdZGXAIDnhIA6nu84xiudD2oI2kgyYaaoPYwo141TJcjybapn/F8+Y2uk0axI89Tk53YGZbJeGZqfqj1PnYobrApbcIv/RKGL6lbBB/A9cmfKkkUiivkXx1uR4/l6vipJLiwyrA0ABpr4t/mt5Xn8ufet5DzGzpifnqjWJrw9/psMv20DCeJrKx0aZ3SFLiVZnlUQk1DxSFBZWA+EXBIS8zKPb9bfWUOUlG7zMiQkC3tGOT78aYZ5Ulf99k3tUaByGxArJpPo0lOoufPX/ChnSHwdpKMduVc+dunZ+J3URExuA/HaFn+zz5vf33G8Su7h/4BccYGxs90sNZpVPGLMPFa7dE0z7g7sjcI1qXxVapvikT63414wyoZs34dKw6wUJ5erzzhFHEpYf49HjmrOHfUDzrastH4DDQ+Qga+cBDziC8fd9av8IWlb2QK1O0xhrMz4P88tXzsJlMml0GBUzq99JQUQWZzUqKqRZkuSPEM/s0mJkhvaArhd9Kezy7cqEGJjPLMxkA0vpbarSttKg=
   file: pirg/target/pirg-$project_version.jar
   skip_cleanup: true
   on:
