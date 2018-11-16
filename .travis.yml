@@ -10,5 +10,4 @@ deploy:
   skip_cleanup: true
   on:
     repo: werhardt/pirg
-    tags: true
   name: "$project_version"
