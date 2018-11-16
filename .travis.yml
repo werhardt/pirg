@@ -1,8 +1,7 @@
 language: java
 before_deploy:
-- mvn help:evaluate -N -Dexpression=project.version|grep -v '\['
-- export project_version=$(mvn help:evaluate -N -Dexpression=project.version|grep
-  -v '\[')
+  - mvn help:evaluate -N -Dexpression=project.version|grep -v '\['
+  - export project_version=$(mvn help:evaluate -N -Dexpression=project.version|grep -v '\[')
 deploy:
   # HOWTO update `api_key.secure`
   # - Create a `public_repo` GitHub token. Go to: https://github.com/settings/tokens/new
@@ -16,6 +15,5 @@ deploy:
   file: pirg/target/pirg-$project_version.jar
   skip_cleanup: true
   on:
-    tags: true
     repo: werhardt/pirg
-  name: "$project_version"
+  name: $project_version
