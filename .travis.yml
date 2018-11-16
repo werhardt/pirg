@@ -1,11 +1,11 @@
 language: java
 before_deploy:
-- mvn help:evaluate -N -Dexpression=project.version|grep -v '\['
-- export project_version=$(mvn help:evaluate -N -Dexpression=project.version|grep -v '\[')
+  - mvn help:evaluate -N -Dexpression=project.version|grep -v '\['
+  - export project_version=$(mvn help:evaluate -N -Dexpression=project.version|grep -v '\[')
 deploy:
   provider: releases
   api_key:
-    secure: "U3i+wuOSgs16Tmb3qnuVT4VeQzWSnJRFnUWltY/Fpg8mFfGBVnvES40QIdIX64PBqrtyy1iiOHlzjzxK9yoea2zh5DcGVM5ezlV6OOrs3FhoobVyap5po5/iAqI0VADV2xA/s4LAp29zzRh1G1sQ8B1c4UcJ7PmWphC3jvdZkBLDPZoZSqZ3RQPfZC1qyD7cI5XQJ8TMC2RLvwvyIsH0673cBA5hjkDei/ssNA+9Y83bksnLnfrjHm653ncIC2KnTqcoM6RAZvdG6ok+UqpYtNN99oYWJRg4IV1pEb66Y5sGFq2KOch1Njpy9TPML0xhIJzmA3RLBRwJdVBiQWFWJti16duc9w1FzQUQ9F+Z5vNXkOv7Au2Qh82jeH5kfIg2mtrENOr6rGmfgmQFIU1QnF9KtQuphBrF0e1r9GurbLlXo4x24qUOSkt8TUCNM/wETlPAtxMjF2lqzof2eVrqlmLGbul+cFyQxpHOU/ReOc/UXvcSonlECj0KlFMPLfQrGihMLzYEHauLX91C/oaibv4polQmS8ICwr8Q0FHQ35CeoWo147cxGjA4Y/dpF1Fgb6xGJg9U3TZN5Bf3GVW/hDDcwr3nSXB2S+k1xcYvSIY4mvLpUVn49YB+orxiaQYJDFmt9cH7ATUxtin8UxAzmM9c6VfHvYELZvWSZm7FtSI="
+    secure: "cdkx3D4eQKOTkctFXyKF0wdECcIB7OH1gGvB3PlF7Av2eiST7xRjmzx2yFpHjBIshoDrtRM/yZsfnL7vJzwRiih+KKWDKRxU5AoDOqwXzicebCrFyfDnNfCULpty7GCUFTM5CPumjyrPiEFodrWLL89p2m0j8eFG2jPl1zDqQN4R+SwROZDJDzuO/kGF0T0fegAATluxSrkTYaNzhH6KV2CyH9EYwMNGjElM0RBt8u79wXGTqVrElGpDTNQsil9laXzP57+PdoHa69hJ16jSR+TfNK27QMIOYMGAAmiT+uT11+ikWXfwU1MAlnD8XeWslBys2BOkUBgEWGeANt4rcOyzfe1lofTmvXSGw8gst7OkoSgxLUR2QUH5qBwwFk7oGcQZy4qf/4BjK4oBMXdEbjHSxFyFeUk/1CTNINYrMIEADlFbclutWN4qiwkqI/crMYsXZoAa5NHGjwAKOC09u0hixgEm5DbRu0B33P0BhK+hm2nc2yUH3FPI3kcXGl6Ht6NrWr0ITUPhkRIy1g8O9jQnYFfY21e4adTeGYnLiL+A53TovBYj0lTyiRNxrP9Q3rTeZhfcr36TsGSgie0jEg4HyUkulTPl+TtTnukX0Gep7zJy47XrjfbXmXT+3y5h2keUg2yd25f8j8OsKsC6dEJHbDmTW+HkSKyD45P7M+E="
   file: pirg/target/pirg-$project_version.jar
   skip_cleanup: true
   on:
