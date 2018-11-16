@@ -1,4 +1,4 @@
-package pirg.server;
+package io.erhardt.pirg.server;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

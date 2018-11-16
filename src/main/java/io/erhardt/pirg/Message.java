@@ -1,4 +1,4 @@
-package pirg;
+package io.erhardt.pirg;
 
 import java.util.HashMap;
 import java.util.Map;

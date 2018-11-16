@@ -1,4 +1,4 @@
-package pirg;
+package io.erhardt.pirg;
 
 import static org.junit.Assert.assertEquals;
 

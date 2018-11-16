@@ -1,4 +1,4 @@
-package pirg.config;
+package io.erhardt.pirg.config;
 
 import java.io.File;
 import java.io.FileInputStream;
