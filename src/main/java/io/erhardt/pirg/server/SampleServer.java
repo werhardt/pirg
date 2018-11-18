@@ -13,7 +13,7 @@ import okhttp3.mockwebserver.RecordedRequest;
 
 /**
  * Sample Server for testing purposes.
- * 
+ *
  * @author Waldemar Erhardt
  *
  */
@@ -24,10 +24,18 @@ public class SampleServer extends Dispatcher {
    private MockWebServer server = new MockWebServer();
 
    private final int port;
-   private int requestCount = 0;
+   private int requestCounter = 0;
 
    public SampleServer(int port) {
       this.port = port;
+   }
+
+   public int getRequestCounter() {
+      return this.requestCounter;
+   }
+
+   public void resetRequestCounter() {
+      this.requestCounter = 0;
    }
 
    public void run() throws IOException {
@@ -37,7 +45,7 @@ public class SampleServer extends Dispatcher {
    }
 
    public void stop() {
-      LOGGER.info("Server - stopping.. (handled {} requests)", this.requestCount);
+      LOGGER.info("Server - stopping.. (handled {} requests)", this.requestCounter);
       try {
          server.close();
          LOGGER.info("Server - stopped!");
@@ -49,7 +57,7 @@ public class SampleServer extends Dispatcher {
    @Override
    public MockResponse dispatch(RecordedRequest request) {
 
-      this.requestCount++;
+      this.requestCounter++;
       String path = request.getPath();
       try {
          if (!path.startsWith("/") || path.contains(".."))

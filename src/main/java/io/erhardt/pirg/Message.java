@@ -1,5 +1,4 @@
 package io.erhardt.pirg;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -7,16 +6,17 @@ import java.util.UUID;
 
 public class Message {
 
-   public static final int HTTP_METHOD_GET = 0;
-   public static final int HTTP_METHOD_POST = 1;
-   public static final int HTTP_METHOD_PUT = 2;
-   public static final int HTTP_METHOD_DELETE = 3;
+   public static final String HTTP_METHOD_GET = "GET";
+   public static final String HTTP_METHOD_POST = "POST";
+   public static final String HTTP_METHOD_PUT = "PUT";
+   public static final String HTTP_METHOD_DELETE = "DELETE";
 
    private Map<String, String> headers = new HashMap<>();
-   private int httpMethod = HTTP_METHOD_POST;
+   private String httpMethod = HTTP_METHOD_POST;
    private String body;
    private String url;
    private String id;
+   private long timestamp;
 
    public Map<String, String> getHeaders() {
       return headers;
@@ -26,11 +26,11 @@ public class Message {
       this.headers = headers;
    }
 
-   public int getHttpMethod() {
+   public String getHttpMethod() {
       return httpMethod;
    }
 
-   public void setHttpMethod(int httpMethod) {
+   public void setHttpMethod(String httpMethod) {
       this.httpMethod = httpMethod;
    }
 
@@ -54,11 +54,16 @@ public class Message {
       return this.id;
    }
 
+   public long getTimestamp() {
+      return this.timestamp;
+   }
+
    /******** BUILDER Methods ********/
 
    public static Message build() {
       Message msg = new Message();
       msg.id = UUID.randomUUID().toString();
+      msg.timestamp = System.currentTimeMillis();
       return msg;
    }
 
@@ -72,7 +77,7 @@ public class Message {
       return this;
    }
 
-   public Message method(int httpMethod) {
+   public Message method(String httpMethod) {
       this.httpMethod = httpMethod;
       return this;
    }

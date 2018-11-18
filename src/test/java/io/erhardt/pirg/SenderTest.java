@@ -3,12 +3,17 @@ package io.erhardt.pirg;
 import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
-import okhttp3.Response;
+
 import org.junit.AfterClass;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import okhttp3.Response;
+import io.erhardt.pirg.Message;
+import io.erhardt.pirg.Sender;
 import io.erhardt.pirg.server.SampleServer;
 
 public class SenderTest {
@@ -31,28 +36,38 @@ public class SenderTest {
       server.stop();
    }
 
+   @Before
+   public void before() {
+      server.resetRequestCounter();
+   }
+
+   private void sleep(int seconds) {
+      try {
+         Thread.sleep(seconds * 1000);
+      } catch (InterruptedException e) {
+      }
+   }
+
    @Test
-   public void testSending() throws IOException {
+   public void testSending() {
 
       Message msg = Message.build().url(URL).body("test");
 
       Sender sender = new Sender();
-      Response response = sender.send(msg);
-      assertEquals(200, response.code());
-      LOGGER.info("Client - response from server: {}", new String(response.body().bytes()));
-
+      sender.send(msg);
+      this.sleep(3);
+      assertEquals(1, server.getRequestCounter());
    }
 
    @Test
-   public void testSendingMulti() throws IOException {
+   public void testSendingMulti() {
 
       Sender sender = new Sender();
       for (int i = 0; i < 100; i++) {
          Message msg = Message.build().url(URL).body("test - " + i);
-         Response response = sender.send(msg);
-         assertEquals(200, response.code());
-         LOGGER.info("Client - response from server: {}", new String(response.body().bytes()));
+         sender.send(msg);
       }
-
+      this.sleep(3);
+      assertEquals(100, server.getRequestCounter());
    }
 }
