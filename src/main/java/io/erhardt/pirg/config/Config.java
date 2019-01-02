@@ -25,6 +25,14 @@ public class Config {
         props.load(new FileInputStream(new File(url.toURI())));
     }
 
+    public Config(URL url) throws Exception {
+        if (url == null) {
+            throw new FileNotFoundException("'" + url.toString() + "' not found.");
+        }
+
+        props.load(new FileInputStream(new File(url.toURI())));
+    }
+
     public String getString(String key) {
         return this.props.getProperty(key);
     }
