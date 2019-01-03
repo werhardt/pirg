@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.erhardt</groupId>
   <artifactId>pirg</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.2</version>
   <name>pirg</name>
   <description>Simple HTTP client wrapper.</description>
   <url>https://github.com/werhardt/pirg</url>

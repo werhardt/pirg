@@ -3,12 +3,12 @@
 
 Yet another http client.
 
-pirg is a helper library to send data over http to a configured server.
+pirg is a helper library to send data to a configured server.
 
 
 ##### Configuration
 
-The possible configuration and it's default values.
+The configuration and it's default values.
 ```
 # Start sending of messages on creation of the Sender object (default = true)
 # If false, sending has to be started manually with the Sender.start() method.
@@ -22,4 +22,15 @@ pirg.sendinterval=1
 
 # The number of messages to send on each interval (default = 100)
 prig.sendsize=100
+```
+
+##### Usage
+```java
+String url = "..."; // the destination url
+String json = "..."; // the data to send
+
+Message msg = Message.build().url(url).body(json);
+
+Sender sender = new Sender();
+sender.send(msg);
 ```
